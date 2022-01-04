@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "persion",
+      "type": "com.gyf.domain.Persion",
+      "sourceType": "com.gyf.domain.Persion"
+    }
+  ],
+  "properties": [
+    {
+      "name": "persion.age",
+      "type": "java.lang.Integer",
+      "sourceType": "com.gyf.domain.Persion"
+    },
+    {
+      "name": "persion.name",
+      "type": "java.lang.String",
+      "sourceType": "com.gyf.domain.Persion"
+    },
+    {
+      "name": "persion.usermap",
+      "type": "java.util.Map",
+      "sourceType": "com.gyf.domain.Persion"
+    }
+  ],
+  "hints": []
+}

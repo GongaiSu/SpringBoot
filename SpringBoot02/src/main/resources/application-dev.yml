@@ -1,0 +1,4 @@
+jdbc:
+  url: jdbc:mysql:///:3306/user
+  username: admin
+  password: 123456

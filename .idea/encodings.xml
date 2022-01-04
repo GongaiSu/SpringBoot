@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/SpringBoot-Log/01_log4j1/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot-Log/02_SLF4J_Logback/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot-Log/03_Log4j2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot-Log/SLF4J_Log4j2/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot-MyBatis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot01/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/SpringBoot02/src/main/java" charset="UTF-8" />
+  </component>
+</project>

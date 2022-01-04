@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- debug="true":开启logback的debug信息-->
+<!--scan="true" scanPeriod="30 seconds":开启自动扫描，每30秒自动扫描一次-->
+<configuration debug="true" scan="true" scanPeriod="30 seconds">
+<!--    抽取公共部分-->
+<!--    自动配置颜色：%highlight();手动配置颜色：%red[颜色]()-->
+    <property name="CONSOLE_PATTERN" value="%d{HH:mm:ss.SSS} [%highlight(%-5p)] %c %m%n" />
+    <property name="FILE_PATTERN" value="%d{HH:mm:ss.SSS} [%-5p] %c %m%n" />
+    <property name="HTML_PATTERN" value="%d{HH:mm:ss.SSS}%-5p%c%m" />
+    <property name="CHARSET" value="UTF-8"/>
+    <property name="FILE_PATH" value="D:/log"/>
+
+    <!--appender-->
+    <!--控制台输出-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <charset>${CHARSET}</charset>
+            <pattern>${CONSOLE_PATTERN}</pattern>
+        </encoder>
+        <!--过滤器：目前只输出error信息-->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <!--DENY, NEUTRAL, ACCEPT;-->
+            <!--当匹配到level中给定的类型，则接受(输出)-->
+            <onMatch>ACCEPT</onMatch>
+            <!--当匹配到level中给定的类型，则不接受(不输出)--> <!--<onMatch>DENY</onMatch>-->
+            <!--当匹配到不是level中给定的类型，则不接受(不输出)-->
+            <onMismatch>DENY</onMismatch>
+            <!--当匹配到不是level中给定的类型，则接受(输出)--><!-- <onMismatch>ACCEPT</onMismatch>-->
+        </filter>
+    </appender>
+    <!--文件输出-->
+    <appender name="file" class="ch.qos.logback.core.FileAppender">
+        <file>${FILE_PATH}/logback_file.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <charset>${CHARSET}</charset>
+            <pattern>${FILE_PATTERN}</pattern>
+        </encoder>
+    </appender>
+<!--    输出到html-->
+    <appender name="htmlFile" class="ch.qos.logback.core.FileAppender">
+        <file>${FILE_PATH}/logback_file.html</file>
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <charset>${CHARSET}</charset>
+            <layout class="ch.qos.logback.classic.html.HTMLLayout">
+                <pattern>${HTML_PATTERN}</pattern>
+            </layout>
+        </encoder>
+    </appender>
+    <!--基于时间的滚动输出-->
+     <appender name="rollingFILe" class="ch.qos.logback.core.rolling.RollingFileAppender" >
+         <file>${FILE_PATH}/logback_rollingFILe.log</file>
+         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+             <charset>${CHARSET}</charset>
+             <pattern>${FILE_PATTERN}</pattern>
+         </encoder>
+         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+             <!-- 支持压缩:gz格式和zip格式-->
+             <fileNamePattern>${FILE_PATH}/logback_rollingFILe_%d{yyyy-MM-dd-HH-mm-ss}.log</fileNamePattern>
+             <!--删除超过时间的以前的日志文件 （时间单位取决于fileNamePattern中最小的时间单位）-->
+             <maxHistory>20</maxHistory>
+             <!--总的日志大小限制（超过了就删除最早的日志-->
+             <totalSizeCap>10KB</totalSizeCap>
+         </rollingPolicy>
+     </appender>
+    <!--基于大小和时间的滚动输出-->
+    <appender name="rollingFILe2" class="ch.qos.logback.core.rolling.RollingFileAppender" >
+        <file>${FILE_PATH}/logback_rollingFILe2.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <charset>${CHARSET}</charset>
+            <pattern>${FILE_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!--当前文件超过1MB，就生成新的文件-->
+            <maxFileSize>1MB</maxFileSize>
+            <!-- 支持压缩:gz格式和zip格式   ; %i：在新增的文件从0递增-->
+            <fileNamePattern>${FILE_PATH}/logback_rollingFILe2_%d{yyyy-MM-dd-HH-mm}_%i.log</fileNamePattern>
+            <!--删除超过时间的以前的日志文件 （时间单位取决于fileNamePattern中最小的时间单位）-->
+<!--            <maxHistory>20</maxHistory>-->
+<!--            &lt;!&ndash;总的日志大小限制（超过了就删除最早的日志&ndash;&gt;-->
+<!--            <totalSizeCap>10KB</totalSizeCap>-->
+        </rollingPolicy>
+    </appender>
+    <!--开启异步打印日志:一般用于输出文件-->
+    <appender name="async" class="ch.qos.logback.classic.AsyncAppender">
+        <!--设置阻塞队列的长度，默认为256-->
+        <param name="queueSize" value="512"/>
+        <!--当阻塞队列的剩余为20&的容量时，会默认丢弃TRACE,DEBUG.INFO级别的日志信息-->
+        <!--当discardingThreshold设置为0时，就不会丢弃任何信息-->
+        <param name="discardingThreshold" value="0"/>
+        <appender-ref ref="file"/>
+    </appender>
+
+   <!--logger-->
+    <root level="INFO">
+        <appender-ref ref="async"/>
+<!--        <appender-ref ref="rollingFILe2"/>-->
+    </root>
+    <!--不同类可以配置不用输出级别和样式-->
+    <logger name="com.gyf" level="DEBUG">
+        <appender-ref ref="console"/>
+    </logger>
+</configuration>

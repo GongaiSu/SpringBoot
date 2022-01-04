@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="SLF4J_Log4j2" />
+        <module name="SpringBoot-MyBatis" />
+        <module name="02_SLF4J_Logback" />
+        <module name="01_log4j1" />
+        <module name="03_Log4j2" />
+        <module name="SpringBoot02" />
+        <module name="SpringBoot01" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="01_log4j1" target="1.8" />
+      <module name="02_SLF4J_Logback" target="1.8" />
+      <module name="03_Log4j2" target="1.8" />
+      <module name="SLF4J_Log4j2" target="1.8" />
+      <module name="SpringBoot-Log" target="1.8" />
+      <module name="SpringBoot-MyBatis" target="1.8" />
+      <module name="SpringBoot01" target="1.8" />
+      <module name="SpringBoot02" target="1.8" />
+      <module name="SpringBootTest" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="01_log4j1" options="-parameters" />
+      <module name="02_SLF4J_Logback" options="-parameters" />
+      <module name="03_Log4j2" options="-parameters" />
+      <module name="SLF4J_Log4j2" options="-parameters" />
+      <module name="SpringBoot-Log" options="-parameters" />
+      <module name="SpringBoot-MyBatis" options="-parameters" />
+      <module name="SpringBoot01" options="-parameters" />
+      <module name="SpringBoot02" options="-parameters" />
+    </option>
+  </component>
+</project>
