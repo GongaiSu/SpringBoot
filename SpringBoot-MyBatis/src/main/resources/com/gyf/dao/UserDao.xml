@@ -10,14 +10,20 @@
     <select id="listall" resultType="User">
         select * from a
     </select>
-
-    <insert id="add" parameterType="User" keyProperty="id">
+    <!--
+    useGeneratedKeys:开启自增组件放回自增id
+    -->
+    <insert id="add" parameterType="User" keyProperty="id" useGeneratedKeys="true">
     insert into a(id, name , age) values (#{id},#{name},#{age})
     </insert>
 
     <delete id="remove">
         delete from a where id= #{id}
     </delete>
+
+    <update id="updata" parameterType="User">
+        update a set name=#{name},age=#{age} where id=#{id}
+    </update>
 
 
 

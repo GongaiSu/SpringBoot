@@ -28,14 +28,20 @@ public class UserController {
         return userServiceImpl.listall();
     }
     @GetMapping("/remove")
-    public void remove(Integer id){
+    public String remove(Integer id){
         userServiceImpl.remove(id);
+        return "删除成功";
     }
 
     @PostMapping("/add")
     public String add(User user){
         userServiceImpl.add(user);
         return "id=" + user.getId();
+    }
+    @PostMapping("/updata")
+    public String updata(User user){
+        userServiceImpl.updata(user);
+        return "修改成功";
     }
 
 

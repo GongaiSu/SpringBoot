@@ -16,4 +16,6 @@ public interface UserDao {
 
      void remove(Integer id);
 
+     void updata(User user);
+
 }
