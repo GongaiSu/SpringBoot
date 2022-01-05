@@ -1,6 +1,8 @@
 package com.gyf.service.impl;
 
+import com.gyf.dao.StudentDao;
 import com.gyf.dao.UserDao;
+import com.gyf.domain.Student;
 import com.gyf.domain.User;
 import com.gyf.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -9,12 +11,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Slf4j
 public class UserServiceImpl implements UserService  {
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private StudentDao studentDao;
     @Override
     public User list(Integer id) {
         log.info("输入的id为===>{}",id);
@@ -47,5 +52,21 @@ public class UserServiceImpl implements UserService  {
     @Override
     public void updata(User user) {
         userDao.updata(user);
+    }
+
+    @Override
+    public Map<String, Object> getIdForUser(Integer id) {
+        Map<String, Object> idForUser = userDao.getIdForUser(id);
+        return idForUser;
+    }
+
+    @Override
+    public Map<Integer, User> getNameForUser(String name) {
+        return userDao.getNameForUser(name);
+    }
+
+    @Override
+    public Student getIdByStudent(Integer id) {
+        return studentDao.getIdByStudent(id);
     }
 }

@@ -10,10 +10,7 @@
     <select id="listall" resultType="User">
         select * from a
     </select>
-    <!--
-    useGeneratedKeys:开启自增组件放回自增id
-    -->
-    <insert id="add" parameterType="User" keyProperty="id" useGeneratedKeys="true">
+    <insert id="add" parameterType="User" keyProperty="id">
     insert into a(id, name , age) values (#{id},#{name},#{age})
     </insert>
 
@@ -25,6 +22,12 @@
         update a set name=#{name},age=#{age} where id=#{id}
     </update>
 
+    <select id="getIdForUser" resultType="java.util.Map">
+        select * from a where id = #{id}
+    </select>
 
+    <select id="getNameForUser" resultType="map">
+        select * from a where  name like #{name}
+    </select>
 
 </mapper>

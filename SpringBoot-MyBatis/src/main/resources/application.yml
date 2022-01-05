@@ -9,7 +9,7 @@ mybatis:
   type-aliases-package: com.gyf.domain #取别名
   configuration:
     map-underscore-to-camel-case: true #开启驼峰命名法
-#    use-generated-keys: true #开启主键id返回,在新增数据时，把新增的数据id返回，需要在mapper.xml中添加KeyProperty="主键的名称"
+    use-generated-keys: true #开启主键id返回,在新增数据时，把新增的数据id返回，需要在mapper.xml中添加KeyProperty="主键的名称"
 server:
 #  servlet:
 #    context-path: /ect #访问路径的前缀
